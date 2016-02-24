@@ -1,0 +1,15 @@
+{
+  "name": "skillarena",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Swati , manisha",
+  "license": "ISC",
+  "dependencies": {
+        "express" : "~4.5.1"      
+      }
+}
