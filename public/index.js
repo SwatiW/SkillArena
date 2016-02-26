@@ -1,4 +1,8 @@
+angular.module('formApp', ['ngAnimate' ])
 
-// create our angular app and inject ngAnimate and ui-router
+
+// configuring our routes
 // =============================================================================
-angular.module('scotchTodo');
+.controller('first',function($scope) {
+  $scope.msg="swa"
+});

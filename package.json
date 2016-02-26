@@ -10,6 +10,7 @@
   "author": "Swati , manisha",
   "license": "ISC",
   "dependencies": {
-        "express" : "~4.5.1"      
-      }
+    
+    "express": "~4.5.1"
+  }
 }
