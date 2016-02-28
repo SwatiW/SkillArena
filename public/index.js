@@ -1,4 +1,4 @@
-angular.module('formApp', ['ngAnimate' ])
+angular.module('formApp', [ ])
 
 
 // configuring our routes

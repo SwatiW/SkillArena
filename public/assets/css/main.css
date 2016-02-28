@@ -1,0 +1,52 @@
+body{
+  color: white !important;
+}
+
+.navbar{
+  opacity: 0.3;
+}
+
+#items{
+  padding-right: 15px;
+}
+
+@media only screen and (min-height: 500px){
+	.section{
+	height: 680px;
+	}
+}
+
+.section{
+
+  background-color: black;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 18%;
+}
+
+
+h1{
+  padding-bottom: 20px;
+  font-size: 8em;
+}
+
+#input{
+  margin-top: 10px;
+  height: 2.5em;
+  //padding-bottom: 20px;
+  color: grey !important;
+}
+
+#login, #signUp{
+  margin-top: 20px;
+}
+
+hr.vertical{
+  width: 1px !important;
+  height:200px !important;
+  text-align: center;
+  background-color: white !important;
+//  border-color: white !important;
+  padding: 0px !important;
+  float: none !important;
+}
