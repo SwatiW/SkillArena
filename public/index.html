@@ -17,13 +17,13 @@
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/jquery-2.1.3.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/angular-route.min.js"></script>
+    <script src="assets/js/angular-ui-router.js"></script>
 <!--Main controller file-->
     <script src="index.js"></script>
 
 </head>
 
-<body ng-app="formApp" >
+<body ng-app="formApp" ng-controller="indexCtrl">
 
 
   <header class="navbar navbar-default navbar-fixed-top headroom headroom--pinned headroom--top">
@@ -78,25 +78,18 @@
   </div>
 
   <div class="section2">
-      <h2>Quantitative</h2>
-      <hr class="horizantal">
-
-      <div ui-view="quant"></div>
+      <div ng-include="quantTopics?'app/firstPage/quantTopics.html':'app/firstPage/quantInfo.html'"></div>
   </div>
 
   <div class="section2 section3">
-      <h2>Logical</h2>
-      <hr class="horizantal">
-
-      <p >Checkout the topics</p>
+    <div ng-include="logicTopics?'app/firstPage/logicTopics.html':'app/firstPage/logicInfo.html'"></div>
   </div>
 
   <div class="section2">
-      <h2>Verbal</h2>
-      <hr class="horizantal">
-
-      <p>Checkout the topics</p>
+    <div ng-include="verbalTopics?'app/firstPage/verbalTopics.html':'app/firstPage/verbalInfo.html'"></div>
   </div>
+
+  <!-- <img src="../sw.jpg"></img> -->
 
 </body>
 </html>

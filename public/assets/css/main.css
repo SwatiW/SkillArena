@@ -67,3 +67,14 @@ h1{
   padding: 0px !important;
   float: none !important;
 }
+
+.topics{
+  text-align: left !important;
+  padding-left: 10%;
+  padding-top: 30% !important;
+
+}
+
+.topicHr{
+  height:400px !important;
+}
