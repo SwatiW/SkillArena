@@ -10,7 +10,13 @@
   "author": "Swati , manisha",
   "license": "ISC",
   "dependencies": {
-    
-    "express": "~4.5.1"
+    "angular": "^1.5.0",
+    "bcrypt": "^0.8.5",
+    "crypto": "0.0.3",
+    "express": "~4.5.1",
+    "lodash": "^4.6.1",
+    "moment": "^2.12.0",
+    "mongoose": "^4.4.6",
+    "nodemailer": "^0.7.1"
   }
 }

@@ -11,7 +11,7 @@ angular.module('formApp', ['ui.router', ])
 // });
 
 
-.controller('indexCtrl',function($scope){
+.controller('indexCtrl',function($scope,$http){
   $scope.quantTopics=false;
   $scope.logicTopics=false;
   $scope.verbalTopics=false;
@@ -32,5 +32,19 @@ angular.module('formApp', ['ui.router', ])
     $scope.verbalTopics=true;
     $scope.logicTopics=false;
     $scope.quantTopics=false;
+  }
+
+  $scope.login=function(){
+
+    $http.post('/users/login', $scope.user).success(function(response){
+
+      });
+  }
+
+  $scope.signUp=function(){
+
+    $http.post('/users/signUp', $scope.user).success(function(response){
+
+      });
   }
 });
