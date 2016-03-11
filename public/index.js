@@ -35,7 +35,7 @@ angular.module('formApp', ['ui.router', ])
   }
 
   $scope.login=function(){
-
+    console.log($scope.user);
     $http.post('/users/login', $scope.user).success(function(response){
 
       });

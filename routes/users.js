@@ -3,7 +3,7 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var User = require('../models/userModel');
 //var _ = require('lodash');
-var nodemailer = require('nodemailer');
+
 var crypto = require('crypto')
 
 //---------------------------------------------------------------------------
@@ -13,7 +13,6 @@ var crypto = require('crypto')
 //===========================================================================
 
  router.post('/login', function(req,res){
-
   var code = 200;
   var response = {}
   User.userLogin(req.body,function(err,user){
@@ -24,6 +23,7 @@ var crypto = require('crypto')
     else{
 			response={"error" : false,"message" :"Login Successfull",'data': user }
    }
+   console.log(response);
     res.status(code).json(response);
   })
 
