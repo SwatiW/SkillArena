@@ -52,18 +52,19 @@ userSchema.statics.createUser = function(userDetails, callback){
 // request password. if they match send user object or else send error
 //---------------------------------------------------------------------------------------
 userSchema.statics.userLogin = function(request,callback){
-
-  User.findOne({username: request.loginEmail},function(err,user){
+console.log(request);
+  User.findOne({username: request.email},function(err,user){
     console.log("inside findOne");
       if(err){
         callback(err,null)
       }
       else{
-        if(!user){
+        console.log(user);
+        if(user == null){
           callback(new Error("User Does not exists"),null);
         }
         else{
-          if(user.password === request.loginPassword)
+          if(user.password === request.password)
             callback(null,user);
           else
             callback(new Error("Password Incorrect"),null);
