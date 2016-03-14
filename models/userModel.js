@@ -13,6 +13,7 @@ var moment = require('moment');
 var userSchema = new mongoose.Schema({
   username: { type: String, trim: true,unique: true,tolowercase : true},
   password:{ type: String, trim: true},
+  email:{ type: String, trim: true,unique: true},
   firstname:{ type: String, trim: true},
   lastname:{ type: String, trim: true},
   gender:{ type: String},
@@ -29,13 +30,16 @@ var userSchema = new mongoose.Schema({
 // create user -
 // create a new user object and store all the user details in the database.
 //---------------------------------------------------------------------------------------
-userSchema.statics.createUser = function(userDetails, callback){
+userSchema.statics.createUser = function(request, callback){
 
        var newUser = new User();
-       newUser.username = userDetails.username;
-       newUser.password = userDetails.password;
-       newUser.firstname = userDetails.firstname;
-       newUser.lastname = userDetails.lastname;
+       newUser.firstname = request.firstname;
+       newUser.lastname = request.lastname;
+       newUser.username=request.username
+       newUser.email = request.signUpEmail;
+       newUser.password = request.signUpPassword;
+       newUser.dob = request.dob;
+       newUser.gender = request.gender;
        newUser.profilephoto = "_profile_pic_path";
        newUser.profilephotoicon = "_profile_pic_icon_path";
        newUser.createdat = moment().unix();
@@ -52,14 +56,14 @@ userSchema.statics.createUser = function(userDetails, callback){
 // request password. if they match send user object or else send error
 //---------------------------------------------------------------------------------------
 userSchema.statics.userLogin = function(request,callback){
-console.log(request);
-  User.findOne({username: request.email},function(err,user){
-    console.log("inside findOne");
+//console.log(request);
+  User.findOne({email: request.email},function(err,user){
+  //  console.log("inside findOne");
       if(err){
         callback(err,null)
       }
       else{
-        console.log(user);
+      //  console.log(user);
         if(user == null){
           callback(new Error("User Does not exists"),null);
         }

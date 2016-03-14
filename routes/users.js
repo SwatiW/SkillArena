@@ -23,13 +23,14 @@ var crypto = require('crypto')
     else{
 			response={"error" : false,"message" :"Login Successfull",'data': user }
    }
-   console.log(response);
+//   console.log(response);
     res.status(code).json(response);
   })
 
 });
 
 router.post('/signUp' ,function(req, res) {
+
     var response = {}
     var code = 200;
     User.createUser(req.body, function(err, user){
@@ -38,9 +39,9 @@ router.post('/signUp' ,function(req, res) {
          response = {'error':true,'message':err.message};
        }
        else{
-         response = {'error':false,'message':"User created successfull",'data': user};
+         response = {'error':false,'message':"User created successfully",'data': user};
        }
-       res.status(code).json(response);
+       res.status(code).json(req.body);
     });
 });
 

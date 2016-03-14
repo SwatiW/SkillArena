@@ -15,6 +15,8 @@ angular.module('formApp', ['ui.router', ])
   $scope.quantTopics=false;
   $scope.logicTopics=false;
   $scope.verbalTopics=false;
+  $scope.login=true;
+
 
   $scope.showQuantTopics=function(){
     $scope.quantTopics=true;
@@ -34,17 +36,31 @@ angular.module('formApp', ['ui.router', ])
     $scope.quantTopics=false;
   }
 
+  $scope.loginPage=function(){
+    $scope.login=true
+  }
+
+  $scope.signUpPage=function(){
+    $scope.login=false;
+  }
+
   $scope.login=function(){
-    console.log($scope.user);
     $http.post('/users/login', $scope.user).success(function(response){
 
       });
   }
 
-  $scope.signUp=function(){
+  $scope.signUp=function(user){
 
-    $http.post('/users/signUp', $scope.user).success(function(response){
-
-      });
+    if(user.signUpPassword === user.confirmPassword){
+      $http.post('/users/signUp',user).success(function(response){
+          
+        });
+    }
+    else{
+      //give error that Password do not match
+    }
   }
+
+
 });

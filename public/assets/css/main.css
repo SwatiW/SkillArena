@@ -33,10 +33,12 @@ body{
   background-color: black !important;
 }
 
-h1{
+#projectName{
   padding-bottom: 20px;
   font-size: 8em;
 }
+
+
 
 #input{
   margin-top: 10px;
@@ -56,6 +58,10 @@ h1{
   background-color: white !important;
   padding: 0px !important;
   float: none !important;
+}
+
+.signUpLine{
+  height:400px !important;
 }
 
 .horizantal{

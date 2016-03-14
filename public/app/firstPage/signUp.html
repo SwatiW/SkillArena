@@ -1,0 +1,21 @@
+<h1 class="  col-lg-5 col-md-5" id="projectName">SkillArena</h1>
+
+<div  class="col-lg-offset-2 col-md-offset-2 col-lg-1 col-md-1">
+  <hr class="vertical signUpLine">
+</div>
+
+<div class="  col-lg-4 col-md-4 " >
+  <h4  > Sign Up </h4>
+  <form method="post">
+    <input  id="input" class="col-lg-12 col-md-12"  placeholder="Firstname" ng-model="user.firstname">
+    <input  id="input" class="col-lg-12 col-md-12"  placeholder="Lirstname" ng-model="user.lastname">
+    <input  id="input" class="col-lg-12 col-md-12"  placeholder="Username" ng-model="user.username">
+    <input  id="input" class="col-lg-6 col-md-6"  placeholder="DOB" ng-model="user.dob">
+    <input  id="input" class="col-lg-6 col-md-6"  placeholder="Gender" ng-model="user.gender">
+    <input type="email" id="input" class="col-lg-12 col-md-12 "  placeholder="Email Address" ng-model="user.signUpEmail">
+    <input  id="input" type="password" class="col-lg-6 col-md-6"  placeholder="Password" ng-model="user.signUpPassword">
+    <input  id="input" type="password" class="col-lg-6 col-md-6"  placeholder="Confirm Password" ng-model="user.confirmPassword">
+    <input type="submit" id="input"   value="Login" ng-click="loginPage()">
+    <input type="submit" id="input"  value="Sign Up" ng-click="signUp(user)">
+  </form>
+</div>
