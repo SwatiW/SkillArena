@@ -77,10 +77,9 @@ body{
 .topics{
   text-align: left !important;
   padding-left: 10%;
-  padding-top: 30% !important;
-
+  padding-top: 20% !important;
 }
 
 .topicHr{
-  height:400px !important;
+  height:200px !important;
 }

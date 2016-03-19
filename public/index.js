@@ -1,66 +1,36 @@
-angular.module('formApp', ['ui.router', ])
-
+var app=angular.module('formApp', ['ui.router' ])
 
 // configuring our routes
 // =============================================================================
+.config(function($stateProvider, $urlRouterProvider) {
 
-// .config(function($stateProvider, $urlRouterProvider) {
-//
-//     $stateProvider
-//
-// });
+    $stateProvider
 
+        // route to show our basic form (/form)
+        .state('index', {
+            url: '/index',
+            templateUrl: 'index.html',
+        })
 
-.controller('indexCtrl',function($scope,$http){
-  $scope.quantTopics=false;
-  $scope.logicTopics=false;
-  $scope.verbalTopics=false;
-  $scope.login=true;
+        .state('index.home', {
+            url: '/home',
+            templateUrl: 'app/firstPage/home.html',
+            controller: 'homeCtrl'
+        })
 
+        // url will be /form/interests
+        .state('index.forgetPassword', {
+            url: '/forgetPassword',
+            templateUrl: 'app/firstPage/forgetPassword.html',
+            controller: 'forgetCtrl'
+        })
 
-  $scope.showQuantTopics=function(){
-    $scope.quantTopics=true;
-    $scope.logicTopics=false;
-    $scope.verbalTopics=false;
-  }
+        // url will be /form/payment
+        .state('index.resetPassword', {
+            url: '/resetPassword',
+            templateUrl: 'app/firstPage/resetPassword.html',
+            controller: 'resetCtrl'
+        })
 
-  $scope.showLogicTopics=function(){
-    $scope.logicTopics=true;
-    $scope.quantTopics=false;
-    $scope.verbalTopics=false;
-  }
-
-  $scope.showVerbalTopics=function(){
-    $scope.verbalTopics=true;
-    $scope.logicTopics=false;
-    $scope.quantTopics=false;
-  }
-
-  $scope.loginPage=function(){
-    $scope.login=true
-  }
-
-  $scope.signUpPage=function(){
-    $scope.login=false;
-  }
-
-  $scope.login=function(){
-    $http.post('/users/login', $scope.user).success(function(response){
-
-      });
-  }
-
-  $scope.signUp=function(user){
-
-    if(user.signUpPassword === user.confirmPassword){
-      $http.post('/users/signUp',user).success(function(response){
-          
-        });
-    }
-    else{
-      //give error that Password do not match
-    }
-  }
-
-
+    $urlRouterProvider.otherwise('/index/home');
 });

@@ -1,0 +1,48 @@
+
+  <header class="navbar navbar-default navbar-fixed-top headroom headroom--pinned headroom--top">
+      <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div> <!-- /.navbar-header -->
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="nav navbar-nav navbar-right">
+                      <li id="items">
+                          <a href="/about">Know More</a>
+                      </li>
+                      <li id="items">
+                          <a href="/about">Contact</a>
+                      </li> <!-- /.nav -->
+                      <li id="items">
+                          <a href="/contact">Login/Sign Up</a>
+                      </li> <!-- /.nav -->
+                  </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+  </header>
+
+  <div ng-controller="homeCtrl">
+    <div class="section">
+      <div ng-include="login?'app/firstPage/login.html':'app/firstPage/signUp.html'"></div>
+    </div>
+
+    <div class="section2">
+        <div ng-include="quantTopics?'app/firstPage/quantTopics.html':'app/firstPage/quantInfo.html'"></div>
+    </div>
+
+    <div class="section2 section3">
+      <div ng-include="logicTopics?'app/firstPage/logicTopics.html':'app/firstPage/logicInfo.html'"></div>
+    </div>
+
+    <div class="section2">
+      <div ng-include="verbalTopics?'app/firstPage/verbalTopics.html':'app/firstPage/verbalInfo.html'"></div>
+    </div>
+
+  </div>
