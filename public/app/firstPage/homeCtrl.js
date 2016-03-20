@@ -1,4 +1,4 @@
-app.controller('homeCtrl',function($scope,$http){
+app.controller('homeCtrl',function($scope,$http,$state){
   $scope.quantTopics=false;
   $scope.logicTopics=false;
   $scope.verbalTopics=false;
@@ -35,6 +35,9 @@ app.controller('homeCtrl',function($scope,$http){
     console.log(user);
     $http.post('/users/login',user).success(function(response){
       console.log(response);
+      if(response.error == false){
+        $state.go('index.dashboard')
+      }
       });
   }
 
@@ -44,6 +47,7 @@ app.controller('homeCtrl',function($scope,$http){
         console.log(user);
       $http.post('/users/signUp',user).success(function(response){
           console.log(response);
+
         });
     }
     else{

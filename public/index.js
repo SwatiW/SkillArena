@@ -32,5 +32,11 @@ var app=angular.module('formApp', ['ui.router' ])
             controller: 'resetCtrl'
         })
 
+        .state('index.dashboard', {
+            url: '/dashboard',
+            templateUrl: 'app/dashboard/dashboard.html',
+            controller: 'dashCtrl'
+        })
+
     $urlRouterProvider.otherwise('/index/home');
 });
