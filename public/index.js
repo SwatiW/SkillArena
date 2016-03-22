@@ -38,5 +38,11 @@ var app=angular.module('formApp', ['ui.router' ])
             controller: 'dashCtrl'
         })
 
+        .state('index.solve', {
+            url: '/solve',
+            templateUrl: 'app/questions/question.html',
+            controller: 'questionCtrl'
+        })
+
     $urlRouterProvider.otherwise('/index/home');
 });
