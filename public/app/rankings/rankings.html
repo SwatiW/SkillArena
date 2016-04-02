@@ -1,0 +1,13 @@
+<div>Rankings</div>
+<md-list>
+  <md-list-item ng-repeat="item in students">
+    <md-button ng-click="goto(item)" ng-class="{
+                'selected' : item === selected }">
+        {{item.name}}
+        {{item.correct}}
+        {{item.attempted}}
+        {{item.percentage}}
+        {{item.rank}}
+    </md-button>
+  </md-list-item>
+</md-list>

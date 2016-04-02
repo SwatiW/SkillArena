@@ -1,9 +1,13 @@
 body{
-  color: white !important;
+  color: black !important;
 }
 
 .navbar{
   opacity: 0.3;
+}
+
+#firstPage{
+  color: white !important;
 }
 
 #items{

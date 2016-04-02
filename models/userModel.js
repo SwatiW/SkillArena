@@ -40,7 +40,7 @@ userSchema.statics.createUser = function(request, callback){
         var smtpTransport = nodemailer.createTransport('SMTP', {
           service: 'Gmail',
           auth: {
-            user:'team@skillarena.com',
+            user:'teamskillarena@gmail.com',
             pass:'SwatiManisha'
           }
         });
