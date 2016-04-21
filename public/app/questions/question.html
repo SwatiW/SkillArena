@@ -1,45 +1,3 @@
-<!--
-
-<div layout="column" ng-controller="questionCtrl">
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
-                md-component-id="left" layout="column"
-                md-is-locked-open="$mdMedia('gt-sm')"   md-is-locked-close="$mdMedia('lt-sm')">
-
-        <md-toolbar class="md-whiteframe-z1">
-            <h1>Bhendi</h1>
-        </md-toolbar>
-
-        <md-list>
-            <md-list-item ng-repeat="item in topics">
-                    {{item.title}}
-            </md-list-item>
-        </md-list>
-
-    </md-sidenav>
-
-
-    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-        <md-toolbar layout="row" class="md-whiteframe-z1">
-            <md-button class="menu" hide-gt-sm ng-click="toggleMenu()" aria-label="Show User List">
-                <md-icon md-svg-icon="menu" ></md-icon>
-            </md-button>
-        </md-toolbar>
-        <md-content>
-          <md-list>
-              <md-list-item ng-repeat="ques in questions">
-                <md-card>
-                  <md-card-content>
-                          {{ques.question}}
-                          <md-divider></md-divider>
-                  </md-card-content>
-                </md-card>
-
-              </md-list-item>
-          </md-list>
-        </md-content>
-    </div>
-</div> -->
-
 
 
 <div layout="row" ng-controller="questionCtrl">
@@ -54,54 +12,109 @@
                        <span></span>
                        <div>{{username}}</div>
                        <div>{{email}}</div>
+                       <md-divider></md-divider>
                      </div>
-                   </md-toolbar>
+              </md-toolbar>
 
-             <md-list>
-                 <md-list-item ng-repeat="item in topics">
-                         <md-button ng-click="goto(item)" ng-class="{
-                                     'selected' : item === selected }">
-                             {{item.title}}
-                         </md-button>
-                 </md-list-item>
-             </md-list>
-
+              <md-content>
+             <div ng-init="showQuant=false">
+                           <div>
+                             <label>
+                               <a href="" class="spacing" ng-show="!showQuant" ng-click="showQuant=!showQuant">+</a>
+                               <a href="" class="spacing" ng-show="showQuant" ng-click="showQuant=!showQuant">-</a>
+                               <a href="" ng-click="showQuant=!showQuant">Quantitative</a>
+                             </label>
+                           </div>
+                           <div ng-show="showQuant">
+                               <md-list>
+                                   <md-list-item ng-repeat="item in quantTopics">
+                                       <md-button class="spacing" ng-click="goto(item)" ng-class="{
+                                                   'selected' : item === selected }">
+                                           {{item.title}}
+                                       </md-button>
+                                   </md-list-item>
+                               </md-list>
+                           </div>
+                 </div>
                        <md-divider> </md-divider>
+                       <div ng-init="showLogical=false">
+                                     <div>
+                                       <label>
+                                         <a href="" class="spacing" ng-show="!showLogical" ng-click="showLogical=!showLogical">+</a>
+                                         <a href="" class="spacing" ng-show="showLogical" ng-click="showLogical=!showLogical">-</a>
+                                         <a href="" ng-click="showLogical=!showLogical">Logical</a>
+                                       </label>
+                                     </div>
+                                     <div ng-show="showLogical">
+                                         <md-list>
+                                             <md-list-item ng-repeat="item in logicalTopics">
+                                                 <md-button class="spacing" ng-click="goto(item)" ng-class="{
+                                                             'selected' : item === selected }">
+                                                     {{item.title}}
+                                                 </md-button>
+                                             </md-list-item>
+                                         </md-list>
+                                     </div>
+                           </div>
+                                 <md-divider> </md-divider>
+                                 <div ng-init="showVerbal=false">
+                                               <div>
+                                                 <label>
+                                                   <a href="" class="spacing" ng-show="!showVerbal" ng-click="showVerbal=!showVerbal">+</a>
+                                                   <a href="" class="spacing" ng-show="showVerbal" ng-click="showVerbal=!showVerbal">-</a>
+                                                   <a href="" ng-click="showVerbal=!showVerbal">Verbal</a>
+                                                 </label>
+                                               </div>
+                                               <div ng-show="showVerbal">
+                                                   <md-list>
+                                                       <md-list-item ng-repeat="item in verbalTopics">
+                                                           <md-button class="spacing" ng-click="goto(item)" ng-class="{
+                                                                       'selected' : item === selected }">
+                                                               {{item.title}}
+                                                           </md-button>
+                                                       </md-list-item>
+                                                   </md-list>
+                                               </div>
+                                     </div>
 
+                          </md-content>
     </md-sidenav>
+
+
+
 
     <md-content>
       <md-list>
           <md-list-item ng-repeat="ques in questions track by $index">
-            <md-card>
+            <md-card ng-init="ques.attempted=false;ques.correctAns=false">
               <md-card-content>
                 <div>
                   {{$index+1}} . {{ques.question}}
                 </div>
                 <div>
-                  <md-radio-group>
-                      <md-radio-button value={{ques.options[0]}} class="md-primary" ng-disabled="item.attempted">{{ques.options[0]}}</md-radio-button>
-                      <md-radio-button value={{ques.options[1]}} class="md-primary" ng-disabled="item.attempted">{{ques.options[1]}}</md-radio-button>
-                      <md-radio-button value={{ques.options[2]}} class="md-primary" ng-disabled="item.attempted">{{ques.options[2]}}</md-radio-button>
-                      <md-radio-button value={{ques.options[3]}} class="md-primary" ng-disabled="item.attempted">{{ques.options[3]}}</md-radio-button>
+                  <md-radio-group ng-model="ques.givenans" ng-change="change($index,ques.givenans)">
+                    <div ng-repeat="opt in ques.options track by $index" ng-value="optNo=$index">
+                      <input type="radio" name="gender"value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted"> {{optNo+1}}. {{ques.options[optNo]}}<br>
+                      <!-- <md-radio-button value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted">{{optNo+1}}. {{ques.options[optNo]}}</md-radio-button>
+                    </div> -->
                   </md-radio-group>
                 </div>
 
-                <md-divider></md-divider>
+                <p ng-if="ques.attempted"> Selected Option: <span class="radioValue">{{ques.givenans}}</span>
+                  <md-divider></md-divider>
+                  <div ng-if ="ques.correctAns">
+                        Your answer is correct !!
+                  </div>
+                  <div ng-if ="!ques.correctAns && ques.attempted">
+                        Your answer is incorrect !!<br>
+                        Correct Option: {{ques.answer}}
+                  </div>
+                </p>
+
               </md-card-content>
             </md-card>
 
           </md-list-item>
       </md-list>
     </md-content>
-<!--
-        <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-            <md-toolbar layout="row" class="md-whiteframe-z1">
-                <md-button class="menu" hide-gt-md ng-click="toggleMenu()" aria-label="Show User List">
-                    <md-icon md-svg-icon="menu" ></md-icon>
-                  </md-button>
-              <h1 ui-view='heading'></h1>
-          </md-toolbar>
-          <div ui-view=''></div>
-      </div> -->
   </div>

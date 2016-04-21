@@ -31,5 +31,21 @@ var Question = require('../models/quesModel');
 
 });
 
+router.get('/:topic', function(req,res){
+ var code = 200;
+ var response = {}
+ Question.topicQuestions(req.params,function(err,ques){
+   if(err){
+     code = 200
+     response = {"error" : true,"message" : err.message}
+   }
+   else{
+     response={"error" : false,"message" :"Question Fetch Successfull",'data': ques }
+  }
+   res.status(code).json(response);
+ })
+
+});
+
 
 module.exports = router;

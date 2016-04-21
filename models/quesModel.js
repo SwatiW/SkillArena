@@ -34,5 +34,24 @@ questionSchema.statics.allQuestions = function(request,callback){
      });
 };
 
+questionSchema.statics.topicQuestions = function(request,callback){
+  console.log(request);
+  Question.find({topic:request.topic},function(err,ques){
+  //  console.log("inside findOne");
+      if(err){
+        callback(err,null)
+      }
+      else{
+      //  console.log(user);
+        if(ques == null){
+          callback(new Error("There are no questions"),null);
+        }
+        else{
+          callback(null,ques);
+        }
+      }
+     });
+};
+
 var Question = mongoose.model('Question', questionSchema)
 module.exports = Question
