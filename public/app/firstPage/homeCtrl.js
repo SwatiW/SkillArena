@@ -1,4 +1,4 @@
-app.controller('homeCtrl',function($scope,$http,$state){
+app.controller('homeCtrl',function($scope,$http,$state,$rootScope){
   $scope.quantTopics=false;
   $scope.logicTopics=false;
   $scope.verbalTopics=false;
@@ -36,6 +36,8 @@ app.controller('homeCtrl',function($scope,$http,$state){
     $http.post('/users/login',user).success(function(response){
       console.log(response);
       if(response.error == false){
+        $rootScope.username=response.data.username
+        $rootScope.email=response.data.email
         $state.go('index.dashboard')
       }
       });

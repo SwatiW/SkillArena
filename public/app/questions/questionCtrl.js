@@ -1,5 +1,5 @@
 
-app.controller("questionCtrl",  function ($scope) {
+app.controller("questionCtrl",  function ($scope,$rootScope) {
   $scope.topics =
         [
           {title: 'Percentages'},
@@ -14,5 +14,7 @@ app.controller("questionCtrl",  function ($scope) {
           {title: 'Probability'}
         ];
 
+  $scope.goto=function(topic){
 
+  }
 });

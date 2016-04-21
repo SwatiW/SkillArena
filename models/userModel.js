@@ -89,7 +89,7 @@ userSchema.statics.createUser = function(request, callback){
 //---------------------------------------------------------------------------------------
 userSchema.statics.userLogin = function(request,callback){
   User.findOne({email: request.email},function(err,user){
-  //  console.log("inside findOne");
+   console.log(user);
       if(err){
         callback(err,null)
       }

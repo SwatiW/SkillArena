@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var path = require("path");
 
 var users=require('./routes/users')
+var questions=require('./routes/questions')
 
 var port=3000;
 
@@ -15,7 +16,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname,'node_modules')));
 
+
 app.use('/users',users)
+app.use('/questions',questions)
 // app.post('/login',function(req,res){
 // 	console.log("request for login");
 // });

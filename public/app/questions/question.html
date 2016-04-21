@@ -1,6 +1,48 @@
+<!--
+
+<div layout="column" ng-controller="questionCtrl">
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left" layout="column"
+                md-is-locked-open="$mdMedia('gt-sm')"   md-is-locked-close="$mdMedia('lt-sm')">
+
+        <md-toolbar class="md-whiteframe-z1">
+            <h1>Bhendi</h1>
+        </md-toolbar>
+
+        <md-list>
+            <md-list-item ng-repeat="item in topics">
+                    {{item.title}}
+            </md-list-item>
+        </md-list>
+
+    </md-sidenav>
 
 
-<div layout="row">
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+        <md-toolbar layout="row" class="md-whiteframe-z1">
+            <md-button class="menu" hide-gt-sm ng-click="toggleMenu()" aria-label="Show User List">
+                <md-icon md-svg-icon="menu" ></md-icon>
+            </md-button>
+        </md-toolbar>
+        <md-content>
+          <md-list>
+              <md-list-item ng-repeat="ques in questions">
+                <md-card>
+                  <md-card-content>
+                          {{ques.question}}
+                          <md-divider></md-divider>
+                  </md-card-content>
+                </md-card>
+
+              </md-list-item>
+          </md-list>
+        </md-content>
+    </div>
+</div> -->
+
+
+
+<div layout="row" ng-controller="questionCtrl">
     <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
                 md-component-id="left"
                 md-is-locked-open="$mdMedia('gt-sm')">
@@ -10,25 +52,56 @@
                      <div layout="column" class="md-toolbar-tools-bottom inset">
                        <user-avatar></user-avatar>
                        <span></span>
-                       <div>Firstname Lastname</div>
-                       <div>email@domainname.com</div>
+                       <div>{{username}}</div>
+                       <div>{{email}}</div>
                      </div>
-             </md-toolbar>
+                   </md-toolbar>
+
+             <md-list>
+                 <md-list-item ng-repeat="item in topics">
+                         <md-button ng-click="goto(item)" ng-class="{
+                                     'selected' : item === selected }">
+                             {{item.title}}
+                         </md-button>
+                 </md-list-item>
+             </md-list>
+
                        <md-divider> </md-divider>
-            <md-list>
-              <md-list-item ng-repeat="item in topics">
-                {{item.title}}
-              </md-list-item>
-            </md-list>
+
     </md-sidenav>
 
+    <md-content>
+      <md-list>
+          <md-list-item ng-repeat="ques in questions track by $index">
+            <md-card>
+              <md-card-content>
+                <div>
+                  {{$index+1}} . {{ques.question}}
+                </div>
+                <div>
+                  <md-radio-group>
+                      <md-radio-button value={{ques.options[0]}} class="md-primary" ng-disabled="item.attempted">{{ques.options[0]}}</md-radio-button>
+                      <md-radio-button value={{ques.options[1]}} class="md-primary" ng-disabled="item.attempted">{{ques.options[1]}}</md-radio-button>
+                      <md-radio-button value={{ques.options[2]}} class="md-primary" ng-disabled="item.attempted">{{ques.options[2]}}</md-radio-button>
+                      <md-radio-button value={{ques.options[3]}} class="md-primary" ng-disabled="item.attempted">{{ques.options[3]}}</md-radio-button>
+                  </md-radio-group>
+                </div>
+
+                <md-divider></md-divider>
+              </md-card-content>
+            </md-card>
+
+          </md-list-item>
+      </md-list>
+    </md-content>
+<!--
         <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-            <md-toolbar layout="column" class="md-whiteframe-z1">
+            <md-toolbar layout="row" class="md-whiteframe-z1">
                 <md-button class="menu" hide-gt-md ng-click="toggleMenu()" aria-label="Show User List">
                     <md-icon md-svg-icon="menu" ></md-icon>
-                </md-button>
-                <h1 ui-view='heading'></h1>
-            </md-toolbar>
-            <div ui-view=''></div>
-        </div>
-    </div>
+                  </md-button>
+              <h1 ui-view='heading'></h1>
+          </md-toolbar>
+          <div ui-view=''></div>
+      </div> -->
+  </div>
