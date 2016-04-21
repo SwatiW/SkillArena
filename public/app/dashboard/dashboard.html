@@ -3,11 +3,7 @@
 <md-card-content>Swati</md-card-content>
 </md-card>
 
-<link rel="stylesheet" type="text/css" href="C:\Users\SONY\Desktop\element\dashboard.css">
-<script src="C:\Users\SONY\Desktop\element\d3\d3.min.js"></script>
-<script src="C:\Users\SONY\Desktop\element\liquidfill\liquidFillGauge.js" language="JavaScript"></script>
-
-<table id="rankings" vspace = "20">
+<table id="rankings">
   <tr>
     <th>Name</th>
     <th>Rank</th>
@@ -54,7 +50,7 @@
 <svg id="fillgauge2" width="20%" height="50%" onclick="gauge2.update(NewValue());"></svg>
 <svg id="fillgauge3" width="20%" height="50%" onclick="gauge3.update(NewValue());"></svg>
 
-<script language="JavaScript">
+<!-- <script language="JavaScript">
 var config1 = liquidFillGaugeDefaultSettings();
 config1.circleColor = "#807dba";
 config1.textColor = "#807dba";
@@ -85,7 +81,7 @@ config3.waveAnimateTime = 1000;
 var gauge1= loadLiquidFillGauge("fillgauge1", 10, config1);
 var gauge2= loadLiquidFillGauge("fillgauge2", 10, config2);
 var gauge3= loadLiquidFillGauge("fillgauge3", 10, config3);
-</script>
+</script> -->
 
 <script>
 function dashboard(id, fData){
