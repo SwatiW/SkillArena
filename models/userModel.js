@@ -25,8 +25,13 @@ var userSchema = new mongoose.Schema({
   createdat: { type : Number},
   updatedat: { type : Number},
 
-  scores:{type : Number, default : 0},
-  questions_solved : {type : Number, default : 0}
+  scores_quant:{type : Number, default : 0},
+  scores_logical:{type : Number, default : 0},
+  scores_verbal:{type : Number, default : 0},
+  questions_quant:{type : Number, default : 0},
+    questions_logical:{type : Number, default : 0},
+     questions_verbal:{type : Number, default : 0}
+
 });
 
 
@@ -132,6 +137,22 @@ userSchema.statics.resetPassword = function(request,callback){
      });
 }
 
+userSchema.statics.getMarks = function(request,callback){
+  console.log("in db");
+  User.findOne({username: request.username},function(err,user){
+      if(err){
+        callback(err,null)
+      }
+      else{
+        if(user == null){
+          callback(new Error("No user found."),null);
+        }
+        callback(null,user)
+      }
+    }
+   );
+}
+
 userSchema.statics.updateMarks = function(request,callback){
 
   User.findOne({username: request.username},function(err,user){
@@ -144,10 +165,28 @@ userSchema.statics.updateMarks = function(request,callback){
         }
         else{
           if(request.answer== 'true'){
-            
-            user.scores = user.scores + 10
+            if(request.subject=='quant')
+              {user.scores_quant = user.scores_quant + 1
+              user.questions_quant=user.questions_quant + 1}
+            else if(request.subject=='logical')
+              {  user.scores_logical = user.scores_logical + 1
+                user.questions_logical=user.questions_logical + 1 }
+            else
+              {user.scores_verbal = user.scores_verbal + 1
+              user.questions_verbal=user.questions_verbal+1}
           }
-          user.questions_solved=user.questions_solved+1
+          else{
+            if(request.subject=='quant')
+              {
+              user.questions_quant=user.questions_quant + 1}
+            else if(request.subject=='logical')
+              {
+                user.questions_logical=user.questions_logical + 1 }
+            else
+              {
+              user.questions_verbal=user.questions_verbal+1}
+          }
+
           user.save(function(err,user){
             if (err)
               callback(err, null)

@@ -47,7 +47,7 @@ app.controller("questionCtrl",  function ($scope,$rootScope,$http) {
     });
   }
 
-  $scope.change = function (num,givenans){
+  $scope.change = function (num,givenans,subject){
              if(givenans === $rootScope.questions[num].answer)
              {
                $rootScope.questions[num].correctAns=true;
@@ -55,8 +55,13 @@ app.controller("questionCtrl",  function ($scope,$rootScope,$http) {
              else {
                 $rootScope.questions[num].correctAns=false;
              }
+             $scope.sendData={
+               subject:subject,
+               username:$rootScope.username,
+               answer:$rootScope.questions[num].correctAns
+             }
              $rootScope.questions[num].attempted=true;
-             $http.post('/users/marks/'+$rootScope.username+'/'+$rootScope.questions[num].correctAns).success(function(response){
+             $http.post('/users/updateMarks/',$scope.sendData).success(function(response){
                console.log(response);
 
              });
