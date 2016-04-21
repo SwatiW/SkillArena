@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 // mongoose.Promise = require('bluebird');
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
 var nodemailer = require('nodemailer');
 // var hat = require('hat');
 var moment = require('moment');

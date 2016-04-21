@@ -44,5 +44,17 @@ var app=angular.module('formApp', ['ui.router' ])
             controller: 'questionCtrl'
         })
 
+        .state('index.contact', {
+            url: '/contact',
+            templateUrl: 'app/firstPage/contact.html',
+        })
+
+        .state('index.about', {
+            url: '/about',
+            templateUrl: 'app/firstPage/about.html',
+        })
+
+
+
     $urlRouterProvider.otherwise('/index/home');
 });
