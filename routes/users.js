@@ -97,5 +97,20 @@ router.post('/resetPassword' ,function(req, res) {
     });
 });
 
+router.post('/marks/:username/:answer' ,function(req, res) {
+    var response = {}
+    var code = 200;
+    User.updateMarks(req.params, function(err, user){
+       if(err){
+         code = 200;
+         response = {'error':true,'message':err.message};
+       }
+       else{
+         response = {'error':false,'message':"scores updated","data":user};
+       }
+       res.status(code).json(response);
+    });
+});
+
 
 module.exports = router;

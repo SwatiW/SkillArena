@@ -27,11 +27,10 @@
                            </div>
                            <div ng-show="showQuant">
                                <md-list>
-                                   <md-list-item ng-repeat="item in quantTopics">
-                                       <md-button class="spacing" ng-click="goto(item)" ng-class="{
+                                   <md-list-item ng-repeat="item in quantTopics" class="spacing" ng-click="goto(item)" ng-class="{
                                                    'selected' : item === selected }">
                                            {{item.title}}
-                                       </md-button>
+
                                    </md-list-item>
                                </md-list>
                            </div>
@@ -95,8 +94,10 @@
                   <md-radio-group ng-model="ques.givenans" ng-change="change($index,ques.givenans)">
                     <div ng-repeat="opt in ques.options track by $index" ng-value="optNo=$index">
                       <input type="radio" name="gender"value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted"> {{optNo+1}}. {{ques.options[optNo]}}<br>
-                      <!-- <md-radio-button value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted">{{optNo+1}}. {{ques.options[optNo]}}</md-radio-button>
-                    </div> -->
+                       <!-- <md-radio-button value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted">{{optNo+1}}. {{ques.options[optNo]}}</md-radio-button> -->
+
+                    </div>
+                    <md-button class="md-raised md-primary">Primary</md-button>
                   </md-radio-group>
                 </div>
 

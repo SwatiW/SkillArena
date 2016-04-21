@@ -56,5 +56,11 @@ app.controller("questionCtrl",  function ($scope,$rootScope,$http) {
                 $rootScope.questions[num].correctAns=false;
              }
              $rootScope.questions[num].attempted=true;
+             $http.post('/users/marks/'+$rootScope.username+'/'+$rootScope.questions[num].correctAns).success(function(response){
+               console.log(response);
+
+             });
    };
+
+
 });

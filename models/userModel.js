@@ -24,6 +24,9 @@ var userSchema = new mongoose.Schema({
   //resettoken: {type : String},
   createdat: { type : Number},
   updatedat: { type : Number},
+
+  scores:{type : Number, default : 0},
+  questions_solved : {type : Number, default : 0}
 });
 
 
@@ -119,7 +122,33 @@ userSchema.statics.resetPassword = function(request,callback){
         }
         else{
           user.password = request.password
-          newUser.save(function(err,user){
+          user.save(function(err,user){
+            if (err)
+              callback(err, null)
+            callback(null,user)
+          });
+        }
+      }
+     });
+}
+
+userSchema.statics.updateMarks = function(request,callback){
+
+  User.findOne({username: request.username},function(err,user){
+      if(err){
+        callback(err,null)
+      }
+      else{
+        if(user == null){
+          callback(new Error("No user found"),null);
+        }
+        else{
+          if(request.answer== 'true'){
+            
+            user.scores = user.scores + 10
+          }
+          user.questions_solved=user.questions_solved+1
+          user.save(function(err,user){
             if (err)
               callback(err, null)
             callback(null,user)
