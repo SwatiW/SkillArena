@@ -1,87 +1,3 @@
-
-
-<div layout="row" ng-controller="questionCtrl">
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
-                md-component-id="left"
-                md-is-locked-open="$mdMedia('gt-sm')">
-
-              <md-toolbar class="md-tall md-hue-2">
-                    <span flex></span>
-                     <div layout="column" class="md-toolbar-tools-bottom inset">
-                       <user-avatar></user-avatar>
-                       <span></span>
-                       <div>{{username}}</div>
-                       <div>{{email}}</div>
-                       <md-divider></md-divider>
-                     </div>
-              </md-toolbar>
-
-              <md-content>
-             <div ng-init="showQuant=false">
-                           <div>
-                             <label>
-                               <a href="" class="spacing" ng-show="!showQuant" ng-click="showQuant=!showQuant">+</a>
-                               <a href="" class="spacing" ng-show="showQuant" ng-click="showQuant=!showQuant">-</a>
-                               <a href="" ng-click="showQuant=!showQuant">Quantitative</a>
-                             </label>
-                           </div>
-                           <div ng-show="showQuant">
-                               <md-list>
-                                   <md-list-item ng-repeat="item in quantTopics" class="spacing" ng-click="goto(item)" ng-class="{
-                                                   'selected' : item === selected }">
-                                           {{item.title}}
-
-                                   </md-list-item>
-                               </md-list>
-                           </div>
-                 </div>
-                       <md-divider> </md-divider>
-                       <div ng-init="showLogical=false">
-                                     <div>
-                                       <label>
-                                         <a href="" class="spacing" ng-show="!showLogical" ng-click="showLogical=!showLogical">+</a>
-                                         <a href="" class="spacing" ng-show="showLogical" ng-click="showLogical=!showLogical">-</a>
-                                         <a href="" ng-click="showLogical=!showLogical">Logical</a>
-                                       </label>
-                                     </div>
-                                     <div ng-show="showLogical">
-                                         <md-list>
-                                             <md-list-item ng-repeat="item in logicalTopics">
-                                                 <md-button class="spacing" ng-click="goto(item)" ng-class="{
-                                                             'selected' : item === selected }">
-                                                     {{item.title}}
-                                                 </md-button>
-                                             </md-list-item>
-                                         </md-list>
-                                     </div>
-                           </div>
-                                 <md-divider> </md-divider>
-                                 <div ng-init="showVerbal=false">
-                                               <div>
-                                                 <label>
-                                                   <a href="" class="spacing" ng-show="!showVerbal" ng-click="showVerbal=!showVerbal">+</a>
-                                                   <a href="" class="spacing" ng-show="showVerbal" ng-click="showVerbal=!showVerbal">-</a>
-                                                   <a href="" ng-click="showVerbal=!showVerbal">Verbal</a>
-                                                 </label>
-                                               </div>
-                                               <div ng-show="showVerbal">
-                                                   <md-list>
-                                                       <md-list-item ng-repeat="item in verbalTopics">
-                                                           <md-button class="spacing" ng-click="goto(item)" ng-class="{
-                                                                       'selected' : item === selected }">
-                                                               {{item.title}}
-                                                           </md-button>
-                                                       </md-list-item>
-                                                   </md-list>
-                                               </div>
-                                     </div>
-
-                          </md-content>
-    </md-sidenav>
-
-
-
-
     <md-content>
       <md-list>
           <md-list-item ng-repeat="ques in questions track by $index">
@@ -94,10 +10,8 @@
                   <md-radio-group ng-model="ques.givenans" ng-change="change($index,ques.givenans,ques.subject)">
                     <div ng-repeat="opt in ques.options track by $index" ng-value="optNo=$index">
                       <input type="radio" name="gender"value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted"> {{optNo+1}}. {{ques.options[optNo]}}<br>
-                       <!-- <md-radio-button value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted">{{optNo+1}}. {{ques.options[optNo]}}</md-radio-button> -->
-
-                    </div>
-                    <md-button class="md-raised md-primary">Primary</md-button>
+                      <!-- <md-radio-button value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted">{{optNo+1}}. {{ques.options[optNo]}}</md-radio-button>
+                    </div> -->
                   </md-radio-group>
                 </div>
 
