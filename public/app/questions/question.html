@@ -92,7 +92,7 @@
                   {{$index+1}} . {{ques.question}}
                 </div>
                 <div>
-                  <md-radio-group ng-model="ques.givenans" ng-change="change($index,ques.givenans)">
+                  <md-radio-group ng-model="ques.givenans" ng-change="change($index,ques.givenans,ques.subject)">
                     <div ng-repeat="opt in ques.options track by $index" ng-value="optNo=$index">
                       <input type="radio" name="gender"value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted"> {{optNo+1}}. {{ques.options[optNo]}}<br>
                       <!-- <md-radio-button value={{ques.options[optNo]}} class="md-primary" ng-disabled="ques.attempted">{{optNo+1}}. {{ques.options[optNo]}}</md-radio-button>
